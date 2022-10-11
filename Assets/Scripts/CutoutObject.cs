@@ -5,10 +5,10 @@ using UnityEngine;
 public class CutoutObject : MonoBehaviour
 {
     [SerializeField]
-    private Transform targetObject;
+    private Transform TargetObject;
 
     [SerializeField]
-    private LayerMask wallMask;
+    private LayerMask WallMask;
 
     private Camera mainCamera;
 
@@ -19,11 +19,11 @@ public class CutoutObject : MonoBehaviour
 
     private void Update()
     {
-        Vector2 cutoutPos = mainCamera.WorldToViewportPoint(targetObject.position);
+        Vector2 cutoutPos = mainCamera.WorldToViewportPoint(TargetObject.position);
         cutoutPos.y /= (Screen.width / Screen.height);
 
-        Vector3 offset = targetObject.position - transform.position;
-        RaycastHit[] hitObjects = Physics.RaycastAll(transform.position, offset, offset.magnitude, wallMask);
+        Vector3 offset = TargetObject.position - transform.position;
+        RaycastHit[] hitObjects = Physics.RaycastAll(transform.position, offset, offset.magnitude, WallMask);
 
         for (int i = 0; i < hitObjects.Length; ++i)
         {
